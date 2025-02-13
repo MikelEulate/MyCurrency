@@ -1,0 +1,6 @@
+django==5.1.6
+djangorestframework==3.15.2
+dataclasses-json==0.6.4
+psycopg2-binary==2.9.10
+aiohttp==3.11.12
+#celery==5.4.0
