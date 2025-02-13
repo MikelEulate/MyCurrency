@@ -27,8 +27,8 @@
 
 ### **Clone the Repository**
 ```
-git clone https://github.com/tuusuario/mycurrency.git
-cd mycurrency
+git clone https://github.com/MikelEulate/MyCurrency.git
+cd MyCurrency
 ```
 
 ## 2. Create a virtual environment
@@ -67,8 +67,14 @@ docker-compose up --build
 ## 6. Apply Migrations and Load Initial Data
 ```
 python manage.py migrate
+
+# Run the task to load currencies and providers:
 python manage.py load_initial_currencies_and_providers # Load currencies and providers
+
+# Run the task to load test data:
 python manage.py load_test_data # Load test data (optional)
+
+# Run the task to load historical rates:
 python manage.py load_historical_data # Load historical data (optional)
 ```
 
@@ -86,19 +92,24 @@ Access API at http://localhost:8000/
 
 ---
 
-## API USAGE
+## API Usage
 
 Main Endpoints
 ```
-| Método | URL                                                                              | Descripción                        |
-|--------|----------------------------------------------------------------------------------|------------------------------------|
-| GET    | /api/exchange-rates/?source_currency=USD&date_from=2024-01-01&date_to=2024-02-01 | Obtener tasas de cambio históricas |
-| GET    | /api/convert/?source_currency=USD&exchanged_currency=EUR&amount=100              | Convertir un monto entre monedas   |
-| POST   | /api/currencies/                                                                 | Crear una nueva moneda             |
-| GET    | /api/currencies/                                                                 | Listar monedas disponibles         |
-| PUT    | /api/currencies/{id}/                                                            | Actualizar una moneda              |
-| DELETE | /api/currencies/{id}/                                                            | Eliminar una moneda                |
+| Method | URL                                                                                 | Description                             |
+|--------|-------------------------------------------------------------------------------------|-----------------------------------------|
+| GET    | /api/exchange-rates/?source_currency=USD&date_from=2024-01-01&date_to=2024-02-01    | Get historical exchange rates           |
+| GET    | /api/convert/?source_currency=USD&exchanged_currency=EUR&amount=100&date=2025-02-11 | Convert an amount between currencies    |
+| POST   | /api/currencies/                                                                    | Create a new currency                   |
+| GET    | /api/currencies/                                                                    | List available currencies               |
+| PUT    | /api/currencies/{id}/                                                               | Update a currency                       |
+| DELETE | /api/currencies/{id}/                                                               | Delete a currency                       |
+| POST   | /api/providers/                                                                     | Create a new provider                   |
+| GET    | /api/providers/                                                                     | List available providers                |
+| PUT    | /api/providers/{id}/                                                                | Update a provider                       |
+| DELETE | /api/providers/{id}/                                                                | Delete a provider                       |
 ```
+
 
 
 ## Django Admin
@@ -110,18 +121,6 @@ Default credentials:
 ```
 User: BackBase
 Pwd: MyCurrency
-```
-
-
-## Load Historical Data
-Run the task to load currencies and providers:
-```
-python manage.py load_initial_currencies_and_providers
-```
-Run the task to load historical rates:
-
-```
-python manage.py load_test_data
 ```
 
 ## Postman Collection

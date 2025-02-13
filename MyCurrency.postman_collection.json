@@ -1,0 +1,282 @@
+{
+	"info": {
+		"_postman_id": "01aa930c-131f-477b-9966-ab063ba42c3c",
+		"name": "MyCurrency API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42045163"
+	},
+	"item": [
+		{
+			"name": "Get currency excnahge rate for time period",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/exchange-rates/?source_currency=USD&date_from=2025-01-01&date_to=2025-02-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"exchange-rates",
+						""
+					],
+					"query": [
+						{
+							"key": "source_currency",
+							"value": "USD"
+						},
+						{
+							"key": "date_from",
+							"value": "2025-01-01"
+						},
+						{
+							"key": "date_to",
+							"value": "2025-02-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Convert currency rate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/convert/?source_currency=USD&exchanged_currency=EUR&amount=100&date=2025-02-11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"convert",
+						""
+					],
+					"query": [
+						{
+							"key": "source_currency",
+							"value": "USD"
+						},
+						{
+							"key": "exchanged_currency",
+							"value": "EUR"
+						},
+						{
+							"key": "amount",
+							"value": "100"
+						},
+						{
+							"key": "date",
+							"value": "2025-02-11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Currency",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"code\": \"GBP\",\n  \"name\": \"Great British Pound\",\n  \"symbol\": \"£\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/currencies/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"currencies",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Currencies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/currencies/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"currencies",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Currency",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Euro Updated\",\n  \"code\": \"EUR\",\n  \"symbol\": \"€\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/currencies/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"currencies",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Currency",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/currencies/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"currencies",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Provider",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Mock\",\n  \"priority\": 2,\n  \"active\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/providers/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"providers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Providers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/providers/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"providers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Provider",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Mock\",\n  \"priority\": 2,\n  \"active\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/providers/2/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"providers",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Provider",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/providers/2/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"providers",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
