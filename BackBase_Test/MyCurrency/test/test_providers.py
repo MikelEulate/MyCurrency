@@ -10,7 +10,7 @@ from MyCurrency.models import Provider, Currency
 class ExchangeRateProviderTest(TestCase):
 
     @classmethod
-    def test_setUpClass(cls):
+    def setUpClass(cls):
         super().setUpClass()
         load_dotenv()  # Load environment variables from .env file
 
@@ -48,9 +48,18 @@ class ExchangeRateProviderTest(TestCase):
         mock_get.return_value = mock_response
 
         provider = Provider.objects.create(name="CurrencyBeacon", priority=1, active=True)
-        rate = get_exchange_rate_data("USD", "EUR")
+        rate = get_exchange_rate_data("USD", "EUR", "2025-01-01")
         self.assertEqual(rate, 0.85)
 
+    @patch('requests.get')
+    def test_get_exchange_rate_data_returns_none_for_invalid_date(self, mock_get):
+        mock_response = MagicMock()
+        mock_response.status_code = 404
+        mock_get.return_value = mock_response
+
+        rate = get_exchange_rate_data("USD", "EUR", "invalid-date")
+        self.assertIsNone(rate)
+
     def test_get_exchange_rate_data_returns_none_if_no_active_providers(self):
-        rate = get_exchange_rate_data("USD", "EUR")
+        rate = get_exchange_rate_data("USD", "EUR", None)
         self.assertIsNone(rate)
